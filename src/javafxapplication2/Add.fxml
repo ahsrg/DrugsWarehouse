@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication2.AddController">
+   <top>
+      <HBox prefHeight="29.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="userCon" prefHeight="28.0" prefWidth="140.0" text="Label" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#loginPane" text="Salir" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <TabPane fx:id="tabPaneMain" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="reacTab" text="Reactivos">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="reacList" layoutY="28.0" prefHeight="314.0" prefWidth="600.0">
+                          <columns>
+                              <TableColumn fx:id="fechaR" prefWidth="75.0" text="Fecha" />
+                              <TableColumn fx:id="nombreR" prefWidth="75.0" text="Nombre" />
+                              <TableColumn fx:id="cantidadR" prefWidth="75.0" text="Cantidad" />
+                              <TableColumn fx:id="loteR" prefWidth="75.0" text="Lote" />
+                              <TableColumn fx:id="caduR" prefWidth="131.0" text="Fecha de Caducidad" />
+                              <TableColumn fx:id="obserR" onEditStart="#getReacList" prefWidth="168.0" text="Observaciones" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="14.0" layoutY="2.0" mnemonicParsing="false" onAction="#nuevoReac" text="Nuevo reactivo" />
+                        <Button layoutX="124.0" layoutY="2.0" mnemonicParsing="false" text="Eliminar reactivo" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Insumos">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="insuList" layoutY="27.0" prefHeight="317.0" prefWidth="600.0">
+                          <columns>
+                            <TableColumn fx:id="fechaI" prefWidth="75.0" text="Fecha" />
+                            <TableColumn fx:id="tipoI" prefWidth="153.0" text="Tipo de Insumo" />
+                              <TableColumn fx:id="cantidadI" prefWidth="75.0" text="Cantidad" />
+                              <TableColumn fx:id="caduI" prefWidth="132.0" text="Fecha de Caducidad" />
+                              <TableColumn fx:id="obserI" prefWidth="164.0" text="Observaciones" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="14.0" layoutY="2.0" mnemonicParsing="false" onAction="#nuevoInsu" text="Nuevo insumo" />
+                        <Button layoutX="122.0" layoutY="2.0" mnemonicParsing="false" text="Eliminar insumo" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
