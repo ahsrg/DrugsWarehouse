@@ -13,6 +13,7 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class reactivo {
     
+   // private final SimpleStringProperty id;
     private final SimpleStringProperty fecha;
     private final SimpleStringProperty nombre;
     private final SimpleStringProperty lote;
@@ -43,23 +44,23 @@ public class reactivo {
     }
     
     public void setNombre(String name) {
-         fecha.set(name);
+         nombre.set(name);
     }
 
     public String getLote() {
         return lote.get();
     }
     
-    public void setLote(String lote) {
-         fecha.set(lote);
+    public void setLote(String loe) {
+         lote.set(loe);
     }
     
     public String getCantidad() {
-        return fecha.get();
+        return cantidad.get();
     }
 
     public void setCantidad(String can) {
-         fecha.set(can);
+         cantidad.set(can);
     }
 
     public String getCaducidad() {
@@ -67,7 +68,7 @@ public class reactivo {
     }
 
     public void setCaducidad(String cadu) {
-         fecha.set(cadu);
+         caducidad.set(cadu);
     }
     
     public String getObserva() {
@@ -75,7 +76,7 @@ public class reactivo {
     }
     
     public void setObserva(String obs) {
-         fecha.set(obs);
+         observa.set(obs);
     }
     
 }

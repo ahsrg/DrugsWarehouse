@@ -9,11 +9,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -63,17 +66,36 @@ public class FXMLDocumentModel {
       }
   }
   
+  public boolean Insert(reactivo reac) throws SQLException{
+       Statement statement = null;
+      String query = "INSERT INTO Reacs (nombre, fecha, cantidad, lote, fechaVence, observa) VALUES('"+
+              reac.getNombre()+"','"+reac.getFecha()+"','"+reac.getCantidad()
+              +"','"+reac.getLote()+"','"+reac.getCaducidad()+"','"+reac.getObserva()+"')";
+
+      try {
+          statement = connection.createStatement();
+          statement.execute(query);
+              return  true;
+          
+      } catch (Exception e) {
+          Logger.getLogger(FXMLDocumentModel.class.getName()).log(Level.SEVERE, null, e);
+          return false;
+      } finally{
+          statement.close();
+      }
+  }
+  
   public List<reactivo> listReact() throws SQLException{
       PreparedStatement preparedStatement = null;
       ResultSet resultSet = null;
       List<reactivo> listreact = new ArrayList<reactivo>();
-      String query = "SELECT * FROM reactivos";
+      String query = "SELECT * FROM Reacs";
       try {
           preparedStatement = connection.prepareStatement(query);
           resultSet = preparedStatement.executeQuery();
           
           while(resultSet.next()){
-              reactivo rec = new reactivo(resultSet.getString("fecha"), resultSet.getString("nombre"), resultSet.getString("lote"), "algo",resultSet.getString("caducidad"), resultSet.getString("observa"));
+              reactivo rec = new reactivo(resultSet.getString("fecha"), resultSet.getString("nombre"), resultSet.getString("lote"),  resultSet.getString("cantidad"),resultSet.getString("fechaVence"), resultSet.getString("observa"));
               
               listreact.add(rec);
           }
